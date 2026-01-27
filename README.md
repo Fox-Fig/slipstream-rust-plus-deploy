@@ -46,7 +46,7 @@ This command will:
 3. Start the interactive setup process
 4. Configure your slipstream-rust server automatically
 
-**Note**: For supported platforms (Linux x86_64, macOS ARM64, macOS Intel), prebuilt binaries are used for faster installation. For other architectures, the script will build from source which may take 10-30 minutes.
+**Note**: For supported platforms (Linux x86_64, Linux ARM64, macOS ARM64, macOS Intel), prebuilt binaries are used for faster installation. For other architectures, the script will build from source which may take 10-30 minutes.
 
 ## Client Usage
 
@@ -116,6 +116,7 @@ Prebuilt client binaries are available for the following platforms:
 | Platform | Download |
 |----------|----------|
 | Linux (x86_64) | [slipstream-client-linux-amd64](https://github.com/AliRezaBeigy/slipstream-rust-deploy/releases/latest/download/slipstream-client-linux-amd64) |
+| Linux (ARM64) | [slipstream-client-linux-arm64](https://github.com/AliRezaBeigy/slipstream-rust-deploy/releases/latest/download/slipstream-client-linux-arm64) |
 | Windows (x86_64) | [slipstream-client-windows-amd64.exe](https://github.com/AliRezaBeigy/slipstream-rust-deploy/releases/latest/download/slipstream-client-windows-amd64.exe) |
 | macOS (ARM64) | [slipstream-client-darwin-arm64](https://github.com/AliRezaBeigy/slipstream-rust-deploy/releases/latest/download/slipstream-client-darwin-arm64) |
 | macOS (Intel) | [slipstream-client-darwin-amd64](https://github.com/AliRezaBeigy/slipstream-rust-deploy/releases/latest/download/slipstream-client-darwin-amd64) |
@@ -456,7 +457,7 @@ sudo systemctl restart slipstream-rust-server
 ## Features
 
 - **Multi-distribution support**: Fedora, Rocky Linux, CentOS, Debian, Ubuntu
-- **Prebuilt binaries**: Automatically downloads prebuilt binaries for supported platforms (Linux x86_64, macOS ARM64, macOS Intel)
+- **Prebuilt binaries**: Automatically downloads prebuilt binaries for supported platforms (Linux x86_64, Linux ARM64, macOS ARM64, macOS Intel)
 - **Fallback to source build**: Automatically builds from source when prebuilt binaries aren't available
 - **Interactive management menu**: Easy-to-use interface for all operations
 - **Self-updating capability**: Built-in update mechanism for the script
@@ -473,7 +474,7 @@ sudo systemctl restart slipstream-rust-server
 
 This deployment script is for the **Rust implementation** of slipstream, which differs from the C implementation in several ways:
 
-- **Prebuilt binaries**: Prebuilt binaries are available for common platforms (Linux x86_64, Windows x86_64, macOS ARM64, macOS Intel)
+- **Prebuilt binaries**: Prebuilt binaries are available for common platforms (Linux x86_64, Linux ARM64, Windows x86_64, macOS ARM64, macOS Intel)
 - **TLS certificates**: Uses TLS certificates (cert.pem/key.pem) instead of public/private keys
 - **Build dependencies**: When building from source, requires Rust toolchain, cmake, pkg-config, and OpenSSL development headers
 - **Repository location**: Uses binaries from or builds from `https://github.com/Mygod/slipstream-rust`
