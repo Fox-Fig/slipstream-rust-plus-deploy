@@ -196,10 +196,14 @@ uninstall_slipstream() {
         print_status "Disabling Shadowsocks service..."
         systemctl disable shadowsocks-libev-server@config
     fi
-    # Remove Shadowsocks config if exists
+    # Remove Shadowsocks config if exists (both system and snap paths)
     if [ -f /etc/shadowsocks-libev/config.json ]; then
         print_status "Removing Shadowsocks configuration..."
         rm -f /etc/shadowsocks-libev/config.json
+    fi
+    if [ -f /var/snap/shadowsocks-libev/common/etc/shadowsocks-libev/config.json ]; then
+        print_status "Removing Shadowsocks snap configuration..."
+        rm -f /var/snap/shadowsocks-libev/common/etc/shadowsocks-libev/config.json
     fi
 
     # Remove slipstream-server binary
@@ -1683,11 +1687,21 @@ setup_shadowsocks() {
         exit 1
     fi
 
+    # Determine config path: snap is confined and can only read from its common directory
+    local shadowsocks_config_dir
+    local shadowsocks_config_file
+    if command -v snap &> /dev/null && snap list shadowsocks-libev &>/dev/null; then
+        shadowsocks_config_dir="/var/snap/shadowsocks-libev/common/etc/shadowsocks-libev"
+    else
+        shadowsocks_config_dir="/etc/shadowsocks-libev"
+    fi
+    shadowsocks_config_file="${shadowsocks_config_dir}/config.json"
+
     # Create Shadowsocks configuration directory
-    mkdir -p /etc/shadowsocks-libev
+    mkdir -p "$shadowsocks_config_dir"
 
     # Create Shadowsocks configuration file
-    cat > /etc/shadowsocks-libev/config.json << EOF
+    cat > "$shadowsocks_config_file" << EOF
 {
     "server": "127.0.0.1",
     "server_port": ${SHADOWSOCKS_PORT},
@@ -1700,8 +1714,8 @@ setup_shadowsocks() {
 EOF
 
     # Set permissions to 644 so the DynamicUser in systemd can read it
-    chmod 644 /etc/shadowsocks-libev/config.json
-    chown root:root /etc/shadowsocks-libev/config.json
+    chmod 644 "$shadowsocks_config_file"
+    chown root:root "$shadowsocks_config_file"
 
     # Create systemd service override if needed (for snap installations)
     local service_created=false
@@ -1712,7 +1726,7 @@ EOF
             snap_bin="/usr/bin/snap"
         fi
         
-        # For snap installation, create a wrapper service
+        # For snap installation: use config path inside snap's common dir (snap confinement)
         cat > /etc/systemd/system/shadowsocks-libev-server@config.service << EOF
 [Unit]
 Description=Shadowsocks-libev Server Service for %i
@@ -1720,7 +1734,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=${snap_bin} run shadowsocks-libev.ss-server -c /etc/shadowsocks-libev/%i.json
+ExecStart=${snap_bin} run shadowsocks-libev.ss-server -c ${shadowsocks_config_dir}/%i.json
 Restart=on-failure
 RestartSec=5
 
