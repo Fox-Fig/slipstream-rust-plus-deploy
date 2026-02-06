@@ -52,76 +52,8 @@ This command will:
 
 After setting up the server, you can connect to it using the slipstream-rust client. You have two options:
 
-1. **SlipStreamGUI** - A modern, cross-platform GUI client (recommended for beginners)
-2. **Slipstream Client for Android** - Native Android VPN client (full-tunnel via TUN + tun2socks)
-3. **Command-line client** - For advanced users and automation
-
-### SlipStreamGUI (GUI Client)
-
-[**SlipStreamGUI**](https://github.com/mirzaaghazadeh/SlipStreamGUI) is a modern, cross-platform GUI client for SlipStream VPN that provides secure, system-wide tunneling through an HTTP proxy interface. It's the easiest way to connect to your SlipStream server.
-
-#### Features
-
-- 🖥️ **Cross-Platform**: Native support for macOS, Windows, and Linux
-- 🔒 **System-Wide VPN**: Routes all traffic through SlipStream VPN
-- 📦 **Self-Contained**: All dependencies bundled (no internet required after installation)
-
-#### Download & Install
-
-Download the latest release for your platform:
-
-| Platform                 | Download |
-| ------------------------ | -------- |
-| macOS (Apple Silicon)    | [SlipStream-GUI-macOS-ARM64.dmg](https://github.com/mirzaaghazadeh/SlipStreamGUI/releases/latest/download/SlipStream-GUI-macOS-ARM64.dmg) |
-| macOS (Intel)            | [SlipStream-GUI-macOS-Intel.dmg](https://github.com/mirzaaghazadeh/SlipStreamGUI/releases/latest/download/SlipStream-GUI-macOS-Intel.dmg) |
-| Windows (64-bit)         | [SlipStream-GUI-Windows-x64.exe](https://github.com/mirzaaghazadeh/SlipStreamGUI/releases/latest/download/SlipStream-GUI-Windows-x64.exe) |
-| Windows (32-bit)         | [SlipStream-GUI-Windows-x86.exe](https://github.com/mirzaaghazadeh/SlipStreamGUI/releases/latest/download/SlipStream-GUI-Windows-x86.exe) |
-| Linux (x86_64) AppImage  | [SlipStream-GUI-Linux-x64.AppImage](https://github.com/mirzaaghazadeh/SlipStreamGUI/releases/latest/download/SlipStream-GUI-Linux-x64.AppImage) |
-| Linux (x86_64) DEB       | [SlipStream-GUI-Linux-x64.deb](https://github.com/mirzaaghazadeh/SlipStreamGUI/releases/latest/download/SlipStream-GUI-Linux-x64.deb) |
-
-Or visit the [Releases page](https://github.com/mirzaaghazadeh/SlipStreamGUI/releases/latest) for all available downloads.
-
-#### Quick Start with SlipStreamGUI
-
-1. **Install** the app from the latest release (double-click the installer)
-2. **Launch** SlipStreamGUI
-3. **Configure Settings**:
-   - **DNS Resolver**: Your server's IP address and port (e.g., `YOUR_SERVER_IP:53`)
-   - **Domain**: Your SlipStream server domain (e.g., `s.example.com`)
-4. **Start the VPN**:
-   - Click the **"Start VPN"** button
-   - Wait for status indicators to show "Running"
-   - Your traffic is now routed through SlipStream!
-
-#### Sharing PC Internet via Mobile (Same Network)
-
-If your PC and mobile device are on the same Wi-Fi network, you can configure your mobile device to use your PC's internet connection (including the VPN) through the proxy.
-
-**Prerequisites:**
-- PC and mobile device must be connected to the same Wi-Fi network
-- SlipStreamGUI must be running with VPN started
-- Find your PC's local IP address
-
-For more information, visit the [SlipStreamGUI repository](https://github.com/mirzaaghazadeh/SlipStreamGUI).
-
----
-
-### Slipstream Client for Android
-
-[**Slipstream Client for Android**](https://github.com/VortexOne404/slipstream-client-android) is a native Android VPN client that provides full-tunnel connectivity via TUN + tun2socks.
-
-#### Download (v1.0)
-
-| Architecture   | Download |
-|----------------|----------|
-| ARM64 (arm64-v8a) | [app-arm64-v8a-release.apk](https://github.com/VortexOne404/slipstream-client-android/releases/download/v1.0/app-arm64-v8a-release.apk) |
-| ARMv7 (armeabi-v7a) | [app-armeabi-v7a-release.apk](https://github.com/VortexOne404/slipstream-client-android/releases/download/v1.0/app-armeabi-v7a-release.apk) |
-| x86             | [app-x86-release.apk](https://github.com/VortexOne404/slipstream-client-android/releases/download/v1.0/app-x86-release.apk) |
-| x86_64          | [app-x86_64-release.apk](https://github.com/VortexOne404/slipstream-client-android/releases/download/v1.0/app-x86_64-release.apk) |
-
-Or visit the [Releases page](https://github.com/VortexOne404/slipstream-client-android/releases) for all versions.
-
----
+> [!NOTE]
+> You must use **Slipstream Rust Plus clients**, which you can download for your operating system from the **Releases** section of this project.
 
 ### Command-Line Client
 
