@@ -149,7 +149,7 @@ Prebuilt client binaries are available for the following platforms:
 
 ```bash
 # Download the client for your platform
-curl -Lo slipstream-client https://github.com/MortezaVaezi2005/slipstream-rust-deploy/releases/latest/download/slipstream-client-linux-amd64
+curl -Lo slipstream-client https://github.com/Fox-Fig/slipstream-rust-plus-deploy/releases/latest/download/slipstream-client-linux-amd64
 chmod +x slipstream-client
 
 # Run the client (connects to your server via DNS tunnel)
