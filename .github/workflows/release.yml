@@ -529,7 +529,7 @@ jobs:
 
           # Use vendored OpenSSL for Windows; Linux alternate arches use Docker
           if [[ "${{ runner.os }}" == "Windows" ]]; then
-            cargo build --release --target ${{ matrix.target }} -p slipstream-client -p slipstream-server --features openssl-vendored
+            cargo build --release --target ${{ matrix.target }} -p slipstream-client -p slipstream-server
           elif [[ "${{ matrix.use_cross }}" == "true" ]]; then
             cross build --release --target ${{ matrix.target }} -p slipstream-client -p slipstream-server
           else
