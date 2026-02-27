@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-RUN wget https://musl.cc/arm-linux-musleabihf-cross.tgz -O /tmp/musl.tgz && \
+RUN wget https://more.musl.cc/11/x86_64-linux-musl/arm-linux-musleabihf-cross.tgz -O /tmp/musl.tgz && \
     tar -xf /tmp/musl.tgz -C /usr/local && \
     rm /tmp/musl.tgz
 
