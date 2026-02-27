@@ -1,0 +1,40 @@
+FROM ubuntu:24.04
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    cmake \
+    pkg-config \
+    gcc \
+    g++ \
+    perl \
+    libssl-dev \
+    git \
+    ca-certificates \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN wget https://musl.cc/arm-linux-musleabihf-cross.tgz -O /tmp/musl.tgz && \
+    tar -xf /tmp/musl.tgz -C /usr/local && \
+    rm /tmp/musl.tgz
+
+ENV PATH=/usr/local/arm-linux-musleabihf-cross/bin:$PATH
+
+ENV RUSTUP_HOME=/usr/local/rustup \
+    CARGO_HOME=/usr/local/cargo \
+    PATH=/usr/local/cargo/bin:$PATH
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+    && rustup target add armv7-unknown-linux-musleabihf
+
+ENV RUST_TARGET=armv7-unknown-linux-musleabihf
+ENV CC_armv7_unknown_linux_musleabihf=arm-linux-musleabihf-gcc
+ENV CXX_armv7_unknown_linux_musleabihf=arm-linux-musleabihf-g++
+ENV AR_armv7_unknown_linux_musleabihf=arm-linux-musleabihf-ar
+ENV CARGO_TARGET_ARMV7_UNKNOWN_LINUX_MUSLEABIHF_LINKER=arm-linux-musleabihf-gcc
+
+WORKDIR /workspace
+
+COPY build-docker.sh /workspace/build-docker.sh
+RUN chmod +x /workspace/build-docker.sh
+
+CMD ["/workspace/build-docker.sh"]
