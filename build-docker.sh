@@ -33,6 +33,14 @@ fi
 
 cd slipstream-rust
 
+case "$RUST_TARGET" in
+  armv7-unknown-linux-musleabihf)
+    export CC=arm-linux-musleabihf-gcc
+    export CXX=arm-linux-musleabihf-g++
+    export AR=arm-linux-musleabihf-ar
+    ;;
+esac
+
 echo "Building picoquic for $RUST_TARGET..."
 bash scripts/build_picoquic.sh
 
