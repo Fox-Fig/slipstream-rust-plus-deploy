@@ -221,7 +221,7 @@ jobs:
           case "$TARGET" in
             aarch64-unknown-linux-gnu)       DOCKER_PLATFORM=linux/arm64    DOCKERFILE=Dockerfile.arm64    ;;
             armv7-unknown-linux-gnueabihf)   DOCKER_PLATFORM=linux/arm/v7   DOCKERFILE=Dockerfile.armv7    ;;
-            armv7-unknown-linux-musleabihf)  DOCKER_PLATFORM=linux/arm/v7   DOCKERFILE=Dockerfile.armv7-musl ;;
+            armv7-unknown-linux-musleabihf)  DOCKER_PLATFORM=linux/amd64    DOCKERFILE=Dockerfile.armv7-musl ;;
             riscv64gc-unknown-linux-gnu)     DOCKER_PLATFORM=linux/riscv64  DOCKERFILE=Dockerfile.riscv64  ;;
             mips64-unknown-linux-gnuabi64)   DOCKER_PLATFORM=linux/amd64    DOCKERFILE=Dockerfile.mips64   ;;
             mips64el-unknown-linux-gnuabi64) DOCKER_PLATFORM=linux/amd64    DOCKERFILE=Dockerfile.mips64le ;;
