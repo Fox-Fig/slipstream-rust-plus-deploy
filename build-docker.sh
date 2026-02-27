@@ -35,9 +35,9 @@ cd slipstream-rust
 
 case "$RUST_TARGET" in
   armv7-unknown-linux-musleabihf)
-    export CC=arm-linux-musleabihf-gcc
-    export CXX=arm-linux-musleabihf-g++
-    export AR=arm-linux-musleabihf-ar
+    export CC=armv7-unknown-linux-musleabihf-gcc
+    export CXX=armv7-unknown-linux-musleabihf-g++
+    export AR=armv7-unknown-linux-musleabihf-ar
     ;;
 esac
 
