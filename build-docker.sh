@@ -40,6 +40,8 @@ case "$RUST_TARGET" in
     export AR=armv7-unknown-linux-musleabihf-ar
     export CFLAGS="-I/usr/local/musl/armv7-unknown-linux-musleabihf/include"
     export CXXFLAGS="-I/usr/local/musl/armv7-unknown-linux-musleabihf/include"
+    export OPENSSL_ROOT_DIR="/usr/local/musl/armv7-unknown-linux-musleabihf"
+    export OPENSSL_DIR="/usr/local/musl/armv7-unknown-linux-musleabihf"
     ;;
 esac
 
