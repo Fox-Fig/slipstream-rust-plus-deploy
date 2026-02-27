@@ -38,6 +38,8 @@ case "$RUST_TARGET" in
     export CC=armv7-unknown-linux-musleabihf-gcc
     export CXX=armv7-unknown-linux-musleabihf-g++
     export AR=armv7-unknown-linux-musleabihf-ar
+    export CFLAGS="-I/usr/local/musl/armv7-unknown-linux-musleabihf/include"
+    export CXXFLAGS="-I/usr/local/musl/armv7-unknown-linux-musleabihf/include"
     ;;
 esac
 
